@@ -5,6 +5,8 @@ import Investigations.MedicalInvestigation;
 import java.net.URL;
 
 public abstract class Person {
+
+    //Creation of a Person Abstract so in the future it can be used to make Doctor/Nurse Profiles
     private int age;
     private String name;
     private URL profilePictureURL;

@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 public class MRI extends Scan {
     private URL imageURL;
-    private int fieldStrength;
+    private final int fieldStrength;
 
     public MRI(String image, int fieldStrength, LocalDate scanDate){
         super(scanDate);

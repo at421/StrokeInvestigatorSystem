@@ -18,8 +18,11 @@ public class StrokeSystem {
         MRI mriExamDVO = new MRI("https://martinh.netfirms.com/BIOE60010/mri1.jpg", 2, LocalDate.of(2023, 9, 14));
         BloodPressure bpDVO = new BloodPressure(130, 70, LocalDate.of(2023, 9, 15), "ST");
         MedicalInvestigation miDVO = new MedicalInvestigation();
+
+        //Can add any scan as long as it inherits from the scan abstract
         miDVO.addScan(mriExamDVO);
         miDVO.addScan(bpDVO);
+        //Adds medical Exam to Patient Object
         daphneVonOram.addMedicalExam(miDVO);
 
         MRI mriExamSC = new MRI("https://martinh.netfirms.com/BIOE60010/mri2.jpg", 4, LocalDate.of(2023, 11, 23));

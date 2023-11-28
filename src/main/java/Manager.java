@@ -20,6 +20,8 @@ public class Manager {
         frame.setSize(1000,500);
 
         JPanel mainPanel = new JPanel();
+
+        //Flexible for number of patients
         mainPanel.setLayout(new GridLayout(patients.size(),2));
 
         for (Patient patient : patients){
@@ -27,37 +29,49 @@ public class Manager {
             profilePanel.setLayout(new GridLayout(1, 2));
             JLabel imageLabel = new JLabel();
             imageLabel.setIcon(new ImageIcon(patient.getProfilePictureURL()));
-            profilePanel.add(imageLabel);
+
             JLabel nameLabel = new JLabel("<html><b>Name:</b> " + patient.getName() + "<br> <b>Age:</b> " + patient.getAge() + "</html>");
+
+            profilePanel.add(imageLabel);
             profilePanel.add(nameLabel);
-            mainPanel.add(profilePanel);
 
             JPanel scanPanel = new JPanel();
             scanPanel.setLayout(new GridLayout(1, 2));
             JLabel scanImage = new JLabel();
             scanImage.setIcon(new ImageIcon(patient.showLastMedicalExam().getMRI().getImage()));
-            scanPanel.add(scanImage);
+
             JLabel scanDetails = new JLabel("<html> <b>Blood Pressure:</b> " +
                     patient.showLastMedicalExam().getBP().getSystolicPressure() +
                     " over " +
                     patient.showLastMedicalExam().getBP().getDiasolicPressure()
                     + "</html>");
+
+            scanPanel.add(scanImage);
             scanPanel.add(scanDetails);
+
+
+            mainPanel.add(profilePanel);
             mainPanel.add(scanPanel);
         }
+
         frame.setContentPane(mainPanel);
         frame.setVisible(true);
         frame.addWindowListener(new WindowAdapter() {// Ends program if close window is clicked
             public void windowClosing(WindowEvent e) {
                 frame.dispose();
             }});
+
     }
 
     public void adminTechLog(){
+
         JFrame frame = new JFrame("Admin View");
         frame.setSize(500,200);
+
         JPanel adminPanel = new JPanel();
+
         adminPanel.setLayout(new GridLayout(patients.size(), 1));
+
         for (Patient patient : patients){
             JLabel label = new JLabel("<html><b>Patient:</b> " +
                     patient.getName() + ": <b>MRI:</b> " +
