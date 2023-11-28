@@ -1,3 +1,5 @@
+import People.Patient;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
@@ -33,12 +35,12 @@ public class Manager {
             JPanel scanPanel = new JPanel();
             scanPanel.setLayout(new GridLayout(1, 2));
             JLabel scanImage = new JLabel();
-            scanImage.setIcon(new ImageIcon(patient.showLastMedicalExam().mri.getImage()));
+            scanImage.setIcon(new ImageIcon(patient.showLastMedicalExam().getMRI().getImage()));
             scanPanel.add(scanImage);
             JLabel scanDetails = new JLabel("<html> <b>Blood Pressure:</b> " +
-                    patient.showLastMedicalExam().bloodPressure.getSystolicPressure() +
+                    patient.showLastMedicalExam().getBP().getSystolicPressure() +
                     " over " +
-                    patient.showLastMedicalExam().bloodPressure.getDiasolicPressure()
+                    patient.showLastMedicalExam().getBP().getDiasolicPressure()
                     + "</html>");
             scanPanel.add(scanDetails);
             mainPanel.add(scanPanel);
@@ -58,11 +60,11 @@ public class Manager {
         adminPanel.setLayout(new GridLayout(patients.size(), 1));
         for (Patient patient : patients){
             JLabel label = new JLabel("<html><b>Patient:</b> " +
-                    patient.getName() + ": <b>Scans.MRI:</b> " +
-                    patient.showLastMedicalExam().mri.getFieldStrength() + " Tesla, " +
-                    patient.showLastMedicalExam().mri.getScanDate().toString() + ": <b>BP:</b> " +
-                    patient.showLastMedicalExam().bloodPressure.getDuration() + ", " +
-                    patient.showLastMedicalExam().bloodPressure.getScanDate().toString() +
+                    patient.getName() + ": <b>MRI:</b> " +
+                    patient.showLastMedicalExam().getMRI().getFieldStrength() + " Tesla, " +
+                    patient.showLastMedicalExam().getMRI().getScanDate().toString() + ": <b>BP:</b> " +
+                    patient.showLastMedicalExam().getBP().getDuration() + ", " +
+                    patient.showLastMedicalExam().getBP().getScanDate().toString() +
                     "</html>"
             );
             adminPanel.add(label);
